@@ -1,4 +1,4 @@
-import { browser, by, element } from 'protractor';
+import { browser, by, element, ElementFinder, ExpectedConditions as EC } from 'protractor';
 
 export class AppPage {
   navigateTo(): Promise<unknown> {
@@ -6,6 +6,18 @@ export class AppPage {
   }
 
   getTitleText(): Promise<string> {
-    return element(by.css('app-root .content span')).getText() as Promise<string>;
+    return element(by.css('h1')).getText() as Promise<string>;
+  }
+
+  getElementByCss(selector: string): ElementFinder {
+    return element(by.css(selector));
+  }
+
+  waitToBeClickable(selector: string): Promise<unknown> {
+    return browser.wait(EC.elementToBeClickable(this.getElementByCss(selector)), 5000) as Promise<unknown>;
+  }
+
+  waitForAnElement(selector: string): Promise<unknown> {
+    return browser.wait(EC.presenceOf(this.getElementByCss(selector)), 5000) as Promise<unknown>;
   }
 }
