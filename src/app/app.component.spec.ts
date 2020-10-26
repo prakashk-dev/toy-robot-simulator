@@ -145,7 +145,7 @@ describe('AppComponent', () => {
 
   });
 
-  it('should have a correct log message', () => {
+  it('should have a correct log message when robot is moving', () => {
     component.robotState = {
       robotLocation: [0, 0],
       currentFacing: 'north'
@@ -154,6 +154,18 @@ describe('AppComponent', () => {
     component.handleMove();
     const recentlyAddedLog = component.logs[component.logs.length - 1];
     expect(recentlyAddedLog.message).toEqual('Moved from [0,1] to [0,2]');
+
+  });
+
+  it('should have a correct log message when robot is changing direction', () => {
+    component.robotState = {
+      robotLocation: [0, 0],
+      currentFacing: 'north'
+    };
+    component.handleRotate({}, 'left');
+    component.handleRotate({}, 'left');
+    const recentlyAddedLog = component.logs[component.logs.length - 1];
+    expect(recentlyAddedLog.message).toEqual('Now facing south at [0,0]');
 
   });
 
