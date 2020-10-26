@@ -1,0 +1,67 @@
+.container {
+  width: 800px;
+  margin: auto;
+  display: grid;
+  text-align: center;
+  justify-content: center;
+
+  .notification {
+    display: grid;
+    grid-template-columns: 1fr 24px;
+    color: #0c5460;
+    background-color: #d1ecf1;
+    border-color: #bee5eb;
+    position: relative;
+    padding: .75rem 1.25rem;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+    border-radius: .25rem;
+
+    .close {
+      background: transparent;
+      border: none;
+      cursor: pointer;
+    }
+  }
+
+  .btn {
+    width: auto;
+    padding: 6px 12px;
+    cursor: pointer;
+  }
+
+  .initial-command {
+    display: grid;
+    align-items: center;
+    justify-items: start;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+  }
+
+  .control-button-group {
+    display: grid;
+    width: 60%;
+    margin: auto;
+    grid-template-areas: '. move .'
+      'left . right'
+      '. report .';
+    .control-button-move {
+      grid-area: move;
+    }
+    .control-button-left {
+      grid-area: left;
+    }
+    .control-button-right {
+      grid-area: right;
+    }
+    .control-button-report {
+      grid-area: report;
+    }
+
+  }
+
+  button[disabled] {
+    cursor: not-allowed;
+  }
+}
+
