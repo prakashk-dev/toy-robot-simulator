@@ -145,4 +145,16 @@ describe('AppComponent', () => {
 
   });
 
+  it('should have a correct log message', () => {
+    component.robotState = {
+      robotLocation: [0, 0],
+      currentFacing: 'north'
+    };
+    component.handleMove();
+    component.handleMove();
+    const recentlyAddedLog = component.logs[component.logs.length - 1];
+    expect(recentlyAddedLog.message).toEqual('Moved from [0,1] to [0,2]');
+
+  });
+
 });
