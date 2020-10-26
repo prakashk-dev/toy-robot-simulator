@@ -1,0 +1,18 @@
+.log-container {
+  text-align: left;
+  .log {
+    height: 200px;
+    overflow-y: scroll;
+    border: 1px solid #eee;
+    padding: 8px 12px;
+  }
+  .last-log-paragraph {
+    min-height: 10px;
+  }
+  .info {
+    color: green;
+  }
+  .error {
+    color: red;
+  }
+}

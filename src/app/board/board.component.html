@@ -1,0 +1,8 @@
+<div class="board-container">
+  <div class="horizontal-board" *ngFor="let x of board;">
+    <div class="box" *ngFor="let y of x;">
+      <div *ngIf="!robotState.robotLocation?.length">[{{y}}]</div>
+      <div *ngIf="isRobotLocation(y)" class="{{ 'robot robot-' + robotState.currentFacing }}"></div>
+    </div>
+  </div>
+</div>

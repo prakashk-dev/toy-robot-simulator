@@ -1,0 +1,10 @@
+<div class="log-container">
+  <h2>Log</h2>
+  <div class="log">
+    <p *ngFor="let log of logs" [class]="log.status">
+      {{ log.message }}
+      <mat-divider></mat-divider>
+    </p>
+    <p id="lastLog" class="last-log-paragraph"></p>
+  </div>
+</div>
