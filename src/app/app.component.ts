@@ -114,11 +114,12 @@ export class AppComponent implements OnInit {
     // if less than 0 we are trying to rotate left from north direction
     // if more than 3 we are trying to rotate right from west
     nextIndex = nextIndex < 0 ? 3 : nextIndex > 3 ? 0 : nextIndex;
+    const nextFacing = this.metaDirection[nextIndex]?.value;
     this.robotState = {
       ...this.robotState,
-      currentFacing: this.metaDirection[nextIndex]?.value
+      currentFacing: nextFacing
     };
-    this.addLog({ status: 'info', message: `Now facing ${currentFacing} at [${robotLocation}]`});
+    this.addLog({ status: 'info', message: `Now facing ${nextFacing} at [${robotLocation}]`});
   }
 
   // add/subtract xAxis or yAxis depending on moving direction if the next move is valid
