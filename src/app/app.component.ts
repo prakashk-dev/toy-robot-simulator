@@ -143,7 +143,7 @@ export class AppComponent implements OnInit {
         ...this.robotState,
         robotLocation: newRobotLocation
       };
-      this.addLog({ status: 'info', message: `Moved from [${prevRobotLocation}] to [${robotLocation}]`});
+      this.addLog({ status: 'info', message: `Moved from [${prevRobotLocation}] to [${newRobotLocation}]`});
     }
   }
 
