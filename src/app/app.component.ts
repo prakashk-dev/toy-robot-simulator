@@ -71,11 +71,11 @@ export class AppComponent implements OnInit {
     this.myForm = this.formBuilder.group({
       xCoordinate: [null, [
         Validators.required,
-        Validators.pattern('[0-4]+')
+        Validators.pattern('^[0-4]{1}$')
       ]],
       yCoordinate: [null, [
         Validators.required,
-        Validators.pattern('[0-4]+')
+        Validators.pattern('^[0-4]{1}$')
       ]],
       facing: ''
     });
