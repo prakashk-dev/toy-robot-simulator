@@ -72,8 +72,8 @@ describe('AppComponent', () => {
   it('should have log with status error when placing robot outside the board', () => {
     const myForm = component.myForm;
     const robotState = {
-      xCoordinate: 5,
-      yCoordinate: 5,
+      xCoordinate: 11,
+      yCoordinate: 11,
       facing: 'north'
     };
     myForm.setValue(robotState);
