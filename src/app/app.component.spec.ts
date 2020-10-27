@@ -169,4 +169,21 @@ describe('AppComponent', () => {
 
   });
 
+  it('should return index within the range of direction array', () => {
+    let nextIndex = component.getNextIndex(0, 'left');
+    // 0-1 should equal 3
+    expect(nextIndex).toEqual(3);
+    nextIndex = component.getNextIndex(3, 'right');
+    // 3+1 should equal 0
+    expect(nextIndex).toBe(0);
+
+    // make sure normal addition and subtraction also work
+    nextIndex = component.getNextIndex(0, 'right');
+    expect(nextIndex).toBe(1);
+    nextIndex = component.getNextIndex(3, 'left');
+    expect(nextIndex).toBe(2);
+
+
+  })
+
 });

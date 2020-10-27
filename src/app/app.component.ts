@@ -107,19 +107,22 @@ export class AppComponent implements OnInit {
   // refactor this function
   handleRotate(_, direction): void {
     const { robotLocation, currentFacing } = this.robotState;
-    const currentDirection = this.metaDirection.findIndex(dir => dir.value === currentFacing);
+    const currentDirectionIndex = this.metaDirection.findIndex(dir => dir.value === currentFacing);
 
-    let nextIndex = direction === 'left' ? currentDirection - 1 : currentDirection + 1;
-    // check if next Index is outside the range
-    // if less than 0 we are trying to rotate left from north direction
-    // if more than 3 we are trying to rotate right from west
-    nextIndex = nextIndex < 0 ? 3 : nextIndex > 3 ? 0 : nextIndex;
+    const nextIndex = this.getNextIndex(currentDirectionIndex, direction)
     const nextFacing = this.metaDirection[nextIndex]?.value;
     this.robotState = {
       ...this.robotState,
       currentFacing: nextFacing
     };
     this.addLog({ status: 'info', message: `Now facing ${nextFacing} at [${robotLocation}]`});
+  }
+
+  // get next index
+  getNextIndex(currentIndex: number, direction: string): number{
+    const nextIndex = direction === 'left' ? currentIndex - 1 : currentIndex + 1;
+    // lets round the index so that it will not go to negative or more than 3 as we only have 4 direction
+    return (nextIndex + 4) % 4;
   }
 
   // add/subtract xAxis or yAxis depending on moving direction if the next move is valid
